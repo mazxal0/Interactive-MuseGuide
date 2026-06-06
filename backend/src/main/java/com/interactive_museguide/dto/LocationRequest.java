@@ -6,6 +6,7 @@ public record LocationRequest(
     // @NotBlank
     String name,
     Integer floor,
-    String description
+    String description,
+    String warning
 ) {
 }

@@ -22,6 +22,8 @@ public class Location {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
+  private Integer floor;
+
   private String name;
 
   private String description;

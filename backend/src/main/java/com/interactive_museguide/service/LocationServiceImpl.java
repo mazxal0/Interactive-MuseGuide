@@ -20,6 +20,7 @@ public class LocationServiceImpl implements LocationService {
     Location location = new Location();
 
     location.setName(request.name());
+    location.setFloor(request.floor());
     location.setDescription(request.description());
 
     return locationRepository.save(location);

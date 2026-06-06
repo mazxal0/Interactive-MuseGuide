@@ -1,50 +1,36 @@
 package com.interactive_museguide.controller;
 
-import com.interactive_museguide.repository.LocationRepository;
+import com.interactive_museguide.dto.RouteRequest;
+import com.interactive_museguide.dto.RouteResponse;
 import com.interactive_museguide.service.NavigationService;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-@RequestMapping("/navigation")
+@RequestMapping("/api/navigation")
 public class NavigationController {
 
-  private final LocationRepository locationRepository;
   private final NavigationService navigationService;
 
-  @GetMapping
-  public String page(Model model) {
+  @PostMapping("/route")
+  public ResponseEntity<RouteResponse> findRoute(
+      @RequestBody RouteRequest request) {
 
-    model.addAttribute(
-        "locations",
-        locationRepository.findAll());
+    RouteResponse response =
+        new RouteResponse(
+            navigationService.findRoute(
+                request.startLocation(),
+                request.endLocation()
+            )
+        );
 
-    return "navigation";
+    return ResponseEntity.ok(response);
   }
 
-  @PostMapping
-  public String findRoute(
-      Long startLocation,
-      Long endLocation,
-      Model model) {
 
-    List<String> route =
-        navigationService.findRoute(
-            startLocation,
-            endLocation);
-
-    model.addAttribute("route", route);
-
-    model.addAttribute(
-        "locations",
-        locationRepository.findAll());
-
-    return "navigation";
-  }
 }

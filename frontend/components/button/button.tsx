@@ -30,7 +30,7 @@ export default function Button({
                 gap-5
                 bg-white text-black
                 rounded
-                hover:underline hover:scale-105
+                hover:underline hover:scale-99
                 active:scale-95
                 transition
                 disabled:opacity-50 disabled:cursor-not-allowed

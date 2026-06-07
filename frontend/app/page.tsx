@@ -10,7 +10,7 @@ export default function Home() {
       <div className="flex flex-col gap-10 justify-center items-center mx-4 my-2">
         <Link href={'./path-to'}><Button><div className="mr-auto text-left">Как добраться </div><MapIcon /></Button></Link>
         <Link href={'./path'}><Button><div className="mr-auto text-left">Проложить маршрут </div><RoadIcon /></Button></Link>
-        <Link href={'./path-to'}><Button><div className="mr-auto text-left">Навигация по экспозиции </div><WinIcon /></Button></Link>
+        <Link href={'./navigation-exhibition'}><Button><div className="mr-auto text-left">Навигация по экспозиции </div><WinIcon /></Button></Link>
 
       </div>
 
